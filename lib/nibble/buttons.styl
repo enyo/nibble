@@ -1,0 +1,261 @@
+
+// Normal Buttons
+.button
+  width auto
+  background main-color
+  border 1px solid darken((main-color), 15%)
+  box-shadow 0 1px 0 shiny-edge inset
+  color white
+  cursor pointer
+  display inline-block
+  defaultFontFamily()
+  font-size ms(0)
+  font-weight bold
+  line-height 1
+  margin 0
+  outline none
+  padding button-base (button-base * 2) (button-base + 1)
+  position relative
+  text-align center
+  text-decoration none
+  transition background-color 0.15s ease-in-out
+
+  &:hover
+    color white
+    background-color darken(main-color, 10%)
+
+  &:active
+    box-shadow 0 1px 0 dark-edge inset
+
+  &:focus
+    box-shadow 0 0 4px opacify(main-color, 0.4), 0 1px 0 shiny-edge inset
+    color white
+
+  // Sizes
+  &.large
+    font-size ms(1)
+    padding (large-button-base) (large-button-base * 2) (large-button-base + 1)
+
+  &.medium
+    font-size ms(0)
+
+  &.small
+    font-size ms(0) - 3
+    padding (small-button-base) (small-button-base * 2) (small-button-base + 1)
+
+  &.tiny
+    font-size ms(0) - 4
+    padding (tiny-button-base) (tiny-button-base * 2) (tiny-button-base + 1)
+
+  &.expand
+    width 100%
+    text-align center
+
+
+  /* Colors */
+  &.success
+    background-color success-color
+    border 1px solid darken((success-color), 15%)
+    &:hover
+      background-color darken((success-color), 10%)
+    &:focus
+      box-shadow 0 0 5px opacify(success-color, 0.4), 0 1px 0 shiny-edge inset
+ 
+  &.alert
+    background-color alert-color
+    border 1px solid darken((alert-color), 15%)
+    &:hover
+      background-color darken((alert-color), 10%)
+    &:focus
+      box-shadow 0 0 4px opacify(alert-color, 0.3), 0 1px 0 shiny-edge inset
+ 
+  &.secondary
+    background-color secondary-color
+    color darken((secondary-color), 80%)
+    border 1px solid darken((secondary-color), 15%)
+    &:hover
+      background-color darken((secondary-color), 10%)
+    &:focus
+      box-shadow 0 0 5px opacify(secondary-color, 0.5), 0 1px 0 shiny-edge inset
+ 
+
+  &.rounded
+    border-radius button-radius
+  &.round
+    border-radius 1000px
+
+  // Layout
+  &.full-width
+    width 100%
+    text-align center
+    padding-left 0 !important
+    padding-right 0 !important
+
+  &.left-align
+    text-align left
+    text-indent 12px
+
+  // Disabled
+  &.disabled
+  &[disabled]
+    opacity: 0.6
+    cursor: default
+    background: main-color
+    box-shadow(none)
+
+    :hover
+      background: main-color
+    
+    &.success
+    &.success:hover
+      background-color: success-color
+    &.alert
+    &.alert:hover
+      background-color: alert-color
+    &.secondary
+    &.secondary:hover
+      background-color: secondary-color
+
+
+// Don't use native buttons on iOS
+input[type=submit].button, button.button
+  -webkit-appearance none
+
+// @media only screen and (max-width: screen-small - 1) {
+//   .button { display: block; }
+//   button.button, input[type="submit"].button { width: 100%; padding-left: 0; padding-right: 0; }
+// }
+
+// Correct FF button padding
+@-moz-document url-prefix()
+  button::-moz-focus-inner, input[type="reset"]::-moz-focus-inner, input[type="button"]::-moz-focus-inner, input[type="submit"]::-moz-focus-inner, input[type="file"] > input[type="button"]::-moz-focus-inner { border: none; padding: 0;  }
+  input[type="submit"].tiny.button    { padding: (tiny-button-base - 2) (tiny-button-base * 2) (tiny-button-base - 1); }
+  input[type="submit"].small.button   { padding: (small-button-base - 2) (small-button-base * 2) (small-button-base - 1); }
+  input[type="submit"].button, input[type=submit].medium.button { padding: (button-base - 2) (button-base * 2) (button-base - 1) }
+  input[type="submit"].large.button   { padding: (large-button-base - 2) (large-button-base * 2) (large-button-base - 1); }
+
+
+// /* Buttons with Dropdowns ---------------------- */
+
+// .button.dropdown { position: relative; padding-right: ((button-base + 12) * 2);
+
+//   /* Sizes */
+//   &.large { padding-right: (large-button-base * 2) * 2; }
+//   &.small { padding-right: (small-button-base * 2) * 2; }
+//   &.tiny { padding-right: (tiny-button-base * 2) * 2; }
+
+//   /* Triangles */
+//   &:after { @include cssTriangle(6px, #fff, top); position: absolute; top: 50%; right: button-base * 2; margin-top: -2px; }
+//   &.large:after { @include cssTriangle(7px, #fff, top); margin-top: -3px; right: large-button-base * 2; }
+//   &.small:after { @include cssTriangle(5px, #fff, top); margin-top: -2px; right: small-button-base * 2; }
+//   &.tiny:after { @include cssTriangle(4px, #fff, top); margin-top: -1px; right: tiny-button-base * 2; }
+
+//   /* Flyout List */
+//   &>ul { @include box-sizing(content-box); display: none; position: absolute; left: -1px; background: #fff; background: rgba(#fff,0.95); list-style: none; margin: 0; padding: 0; border: 1px solid darken(white, 20%); border-top: none; min-width: 100%; z-index: 40;
+
+//     li { cursor: pointer; padding: 0; min-height: 18px; line-height: 18px; margin: 0; white-space: nowrap; list-style: none;
+//       a { display: block; color: #555; font-size: ms(0) - 1; font-weight: normal; padding: 6px 14px; text-align: left; }
+//       &:hover { background-color: lighten(main-color, 45%); color: #222; }
+//       &.divider { min-height: 0; padding: 0; height: 1px; margin: 4px 0; background: darken(white, 7%); }
+//     }
+//   }
+
+//   &.up>ul { border-top: 1px solid darken(white, 20%); border-bottom: none; }
+
+//   ul.no-hover.show-dropdown { display: block !important; }
+//   &:hover {
+//     &>ul.no-hover {
+//       display: none;
+//     }
+//   }
+
+//   /* Split Dropdown Buttons */
+//   &.split { padding: 0; position: relative;
+
+//     &:after { display: none; }
+//     &:hover { background-color: main-color; }
+//     &.alert:hover { background-color: alert-color; }
+//     &.success:hover { background-color: success-color; }
+//     &.secondary:hover { background-color: secondary-color; }
+
+//     /* Sizes */
+//     &>a { color: white; display: block; padding: button-base ((button-base * 2.5) * 2) (button-base + 1) (button-base * 2); @include single-transition(background-color, .15s, ease-in-out);
+//       &:hover { background-color: darken(main-color, 10%); }
+//     }
+//     &.large>a { padding: large-button-base ((large-button-base * 2.5) * 2) (large-button-base + 1) (large-button-base * 2); }
+//     &.small>a { padding: small-button-base ((small-button-base * 2.5) * 2) (small-button-base + 1) (small-button-base * 2); }
+//     &.tiny>a { padding: tiny-button-base ((tiny-button-base * 2.5) * 2) (tiny-button-base + 1) (tiny-button-base * 2); }
+
+//     /* Triangle Spans */
+//     &>span { background-color: main-color; position: absolute; right: 0; top: 0; height: 100%; width: button-base * 3; border-left: 1px solid darken(main-color, 15%); box-shadow(1px 1px 0 shiny-edge inset); @include single-transition(background-color, .15s, ease-in-out);
+//       &:hover { background-color: darken(main-color, 10%); }
+//       &:after { @include cssTriangle(6px, #fff, top); position: absolute; top: 50%; left: 50%; margin-left: -6px; margin-top: -2px; }
+//     }
+//     &.secondary>span:after { @include cssTriangle(6px, darken((secondary-color), 80%), top); }
+    
+//     &.large span { width: large-button-base * 3; }
+//     &.small span { width: small-button-base * 3; }
+//     &.tiny span { width: tiny-button-base * 3; }
+
+//     &.large span:after { @include cssTriangle(7px, #fff, top); margin-top: -3px; margin-left: -7px; }
+//     &.small span:after { @include cssTriangle(4px, #fff, top); margin-top: -1px; margin-left: -4px; }
+//     &.tiny span:after { @include cssTriangle(3px, #fff, top); margin-top: -1px; margin-left: -3px; }
+
+//     /* Colors */
+//     &.alert>span { background-color: alert-color; border-left-color: darken(alert-color, 15%); }
+//     &.success>span { background-color: success-color; border-left-color: darken(success-color, 15%); }
+//     &.secondary>span { background-color: secondary-color; border-left-color: darken(secondary-color, 15%); }
+//     &.secondary>a { color: darken((secondary-color), 80%); }
+
+//     &.alert>a:hover, &.alert>span:hover { background-color: darken(alert-color, 10%); }
+//     &.success>a:hover, &.success>span:hover { background-color: darken(success-color, 10%); }
+//     &.secondary>a:hover, &.secondary>span:hover { background-color: darken(secondary-color, 10%); }
+//   }
+// }
+
+// /* Button Groups ---------------------- */
+
+// ul.button-group { list-style: none; padding: 0; margin: 0 0 12px; @include clearfix();
+
+//   li { padding: 0; margin: 0 0 0 -1px; float: left;
+//     &:first-child { margin-left: 0; }
+//   }
+
+//   &.radius {
+//     li:first-child .button, li:first-child .button.radius, li:first-child .button.rounded { @include border-radius(0px); border-top-left-radius: button-radius; border-bottom-left-radius: button-radius; }
+//     li + li .button, li + li .button.radius, li + li .button.rounded { border-radius: 0; }
+//     li:last-child .button, li:last-child .button.radius, li:last-child .button.rounded { @include border-radius(0px); border-top-right-radius: button-radius; border-bottom-right-radius: button-radius; }
+//   }
+
+//   &.rounded {
+//     li:first-child .button, li:first-child .button.radius, li:first-child .button.rounded { @include border-radius(0px); border-top-left-radius: 1000px; border-bottom-left-radius: 1000px; }
+//     li + li .button, li + li .button.radius, li + li .button.rounded { border-radius: 0; }
+//     li:last-child .button, li:last-child .button.radius, li:last-child .button.rounded { @include border-radius(0px); border-top-right-radius: 1000px; border-bottom-right-radius: 1000px; }
+//   }
+
+//   &.even {
+//     a.button { width: 100%; }
+//     &.two-up li { width: 50%; }
+//     &.three-up li { width: 33.3%; }
+//     &.three-up li:first-child { width: 33.4%; }
+//     &.four-up li { width: 25%; }
+//     &.five-up li { width: 20%; }
+//   }
+// }
+
+// @media only screen and (max-width: screen-small - 1) {    
+//   .button-group {
+//     button.button, input[type="submit"].button { width: auto; padding: button-base (button-base * 2) (button-base + 1);
+//       &.large     { padding: (large-button-base) (large-button-base * 2) (large-button-base + 1); }
+//       &.medium    { padding: button-base (button-base * 2) (button-base + 1); }
+//       &.small     { padding: (small-button-base) (small-button-base * 2) (small-button-base + 1); }
+//       &.tiny      { padding: (tiny-button-base) (tiny-button-base * 2) (tiny-button-base + 1); }
+//     }
+//     &.even button.button, &.even input[type="submit"].button { width: 100%; padding-left: 0; padding-right: 0; }
+//   }
+// }
+
+// div.button-bar { overflow: hidden;
+//   ul.button-group { float: left; margin-right: 8px; }
+//   ul.button-group:last-child { margin-left: 0; }
+// }

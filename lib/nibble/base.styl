@@ -1,0 +1,75 @@
+
+
+// Global Standards
+
+*
+  box-sizing border-box
+
+html
+  font-size 62.5%
+
+body
+  background $white
+  font-family body-font-family
+  font-size ms(0)
+  line-height 1
+  color body-font-color
+  position relative
+  -webkit-font-smoothing antialiased
+
+
+
+// Links
+
+a
+  color main-color
+  text-decoration none
+  line-height inherit
+
+  a:hover
+    color darken(main-color, 5%)
+
+  a:focus
+    color main-color
+    outline none
+
+p
+  a
+  a:visited
+    line-height inherit
+
+
+// Misc
+
+.left
+  float left
+.right
+  float right
+
+.text-left
+  text-align left
+
+.text-right
+  text-align right
+
+.text-center
+  text-align center
+
+.hide
+  display none
+
+.highlight
+  background highlight-color
+
+#googlemap img, object, embed
+  max-width none
+
+#map_canvas
+  embed
+  img
+  object
+    max-width none
+
+// Reset for strange margins by default on <figure> elements
+figure
+  margin 0

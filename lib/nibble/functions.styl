@@ -1,0 +1,36 @@
+
+// Converts `3` to `three`
+convertNumberToWord(num)
+  foundWord = false
+  for word, i in 'one' 'two' 'three' 'four' 'five' 'six' 'seven' 'eight' 'nine' 'ten' 'eleven' 'twelve' 'thirteen' 'fourteen' 'fifteen' 'sixteen' 'seventeen' 'eighteen' 'nineteen' 'twenty' 'twentyone' 'twentytwo' 'twentythree' 'twentyfour'
+    if i + 1 == num
+      foundWord = true
+      return word
+  error("Invalid number: " + num) unless foundWord
+
+
+
+// Grid Calculation for Percentages
+gridCalc(colNumber, totalColumns)
+  unit((100 * colNumber / totalColumns), '%')
+
+
+// Font size mixin to include px and rem
+fontSize(size, isImportant = false)
+  if isImportant
+    font-size unit(size, 'px') !important
+    font-size unit(size / 10, 'rem') !important
+  else
+    font-size unit(size, 'px')
+    font-size unit(size / 10, 'rem')
+
+
+
+// Default Font Stack
+defaultFontFamily()
+  font-family "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, "Lucida Grande", sans-serif
+
+
+// Augments the alpha
+opacify(color, al)
+  rgba(red(color), green(color), blue(color), min(1, alpha(color) + al))
