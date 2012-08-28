@@ -1,6 +1,8 @@
-body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,p,blockquote,th,td
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, p, blockquote, th, td
   margin 0
   padding 0
+
+body
   font-size ms(0)
 
 p
@@ -122,37 +124,97 @@ ol
 
 
 // Blockquotes
-blockquote, blockquote p { line-height: 1.5; color: lighten(header-font-color, 30%); }
-blockquote { margin: 0 0 ms(1); padding: 9px 20px 0 19px; border-left: 1px solid #ddd;
-  cite { display: block; font-size: ms(0) - 1; color: lighten(header-font-color, 20%);
-    &:before { content: "\2014 \0020"; }
-    a, a:visited { color: lighten(header-font-color, 20%); }
-  }
-}
+blockquote
+blockquote p
+  line-height 1.5
+  color lighten(header-font-color, 30%)
 
-abbr, acronym { text-transform: uppercase; font-size: 90%; color: header-font-color; border-bottom: 1px solid #ddd; cursor: help; }
-abbr { text-transform: none; }
+blockquote
+  margin 0 0 ms(1)
+  padding 9px 20px 0 19px
+  border-left 1px solid #ddd
 
-/*
- * Print styles.
- *
- * Inlined to avoid required HTTP connection: www.phpied.com/delay-loading-your-print-css/
- * Credit to Paul Irish and HTML5 Boilerplate (html5boilerplate.com)
-*/
-.print-only { display: none !important; }
-@media print {
-  * { background: transparent !important; color: black !important; box-shadow:none !important; text-shadow: none !important; filter:none !important; -ms-filter: none !important; } /* Black prints faster: h5bp.com/s */
-  a, a:visited { text-decoration: underline; }
-  a[href]:after { content: " (" attr(href) ")"; }
-  abbr[title]:after { content: " (" attr(title) ")"; }
-  .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; }  /* Don't show links for images, or javascript/internal links */
-  pre, blockquote { border: 1px solid #999; page-break-inside: avoid; }
-  thead { display: table-header-group; } /* h5bp.com/t */
-  tr, img { page-break-inside: avoid; }
-  img { max-width: 100% !important; }
-  @page { margin: 0.5cm; }
-  p, h2, h3 { orphans: 3; widows: 3; }
-  h2, h3 { page-break-after: avoid; }
-  .hide-on-print { display: none !important; }
-  .print-only { display: block !important; }
-}
+  cite
+    display block
+    font-size ms(0) - 1
+    color lighten(header-font-color, 20%)
+
+    &:before
+      content "\2014 \0020"
+    a
+    a:visited
+      color lighten(header-font-color, 20%)
+
+abbr
+acronym
+  text-transform uppercase
+  font-size 90%
+  color header-font-color
+  border-bottom 1px solid #ddd
+  cursor help
+
+abbr
+  text-transform none
+
+
+// Print styles.
+//
+// Inlined to avoid required HTTP connection: www.phpied.com/delay-loading-your-print-css/
+// Credit to Paul Irish and HTML5 Boilerplate (html5boilerplate.com)
+.print-only
+  display: none !important
+
+@media print
+  *
+    // Black prints faster: h5bp.com/s
+    background transparent !important
+    color black !important
+    box-shadow:none !important
+    text-shadow none !important
+    filter none !important
+    -ms-filter none !important
+
+  a
+  a:visited
+    text-decoration underline
+
+  a[href]:after
+    content " (" attr(href) ")"
+
+  abbr[title]:after
+    content " (" attr(title) ")"
+
+  .ir a:after
+  a[href^="javascript:"]:after
+  a[href^="#"]:after
+    // Don't show links for images, or javascript/internal links
+    content ""
+
+  pre
+  blockquote
+    border 1px solid #999
+    page-break-inside avoid
+
+  thead
+    // h5bp.com/t
+    display table-header-group
+  tr
+  img
+    page-break-inside avoid
+  img
+    max-width 100% !important
+  @page
+    margin 0.5cm
+  p
+  h2
+  h3
+    orphans 3
+    widows 3
+  h2
+  h3
+    page-break-after avoid
+  .hide-on-print
+    display none !important
+  .print-only
+    display block !important
+

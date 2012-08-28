@@ -21,6 +21,83 @@
 // }
 
 
+
+// This defines the element as a row and sets up all .three.columns etc.. classes as well
+grid(columnCount = total-columns)
+  row()
+  &.collapse
+    collapseRow()
+    .column
+    .columns
+      collapseColumn()
+
+  .column
+  .columns
+    column()
+
+    &.centered
+      centerColumn()
+
+  &.partial
+    // If a row is only partially complete the last column should be on the left
+    .column:last-child
+    .columns:last-child
+      float left
+
+
+  // Creating .row .#.columns classes
+  for i in 1..columnCount
+    .{convertNumberToWord(i)}
+      width gridCalc(i, columnCount)
+
+  // Creating .row .offset-by-# classes
+  for i in 1..columnCount - 2
+    .offset-by-{convertNumberToWord(i)}
+      offsetBy(i, columnCount)
+
+  // Creating .push-# and .pull-# classes
+  for i in 2..columnCount - 2
+    .push-{convertNumberToWord(i)}
+      push(i, columnCount)
+
+    .pull-{convertNumberToWord(i)}
+      pull(i, columnCount)
+
+
+  @media only screen and (max-width: 767px)
+
+    for i in 1..total-columns - 2
+      .offset-by-{convertNumberToWord(i)}
+        margin-left 0 !important
+
+    for i in 2..total-columns - 2
+      .push-{convertNumberToWord(i)}
+        left auto
+      .pull-{convertNumberToWord(i)}
+        right auto
+
+
+
+    // Mobile column grid
+    for i in 1..mobile-total-columns
+      .mobile-{convertNumberToWord(i)}
+        mobileColumn()
+        width gridCalc(i, mobile-total-columns) !important
+
+        &.collapse
+          .mobile-{convertNumberToWord(i)}
+            collapseColumn()
+
+    for i in 1..mobile-total-columns - 1
+      .push-{convertNumberToWord(i)}-mobile
+        mobilePush(i)
+      .pull-{convertNumberToWord(i)}-mobile
+        mobilePull(i)
+
+
+
+
+
 // Outer row mixin for container rows
 outerRow()
   width row-width
@@ -28,60 +105,99 @@ outerRow()
   min-width screen-small
   margin 0 auto
   clearfix()
-
-
-// Inner row mixin for nested rows, must be a child of an outer-row element. behavior can be 'collapse' to get rid of margins
-innerRow(behavior = false)
-  if behavior == collapse
+  @media only screen and (max-width: 767px)
     width auto
-    max-width none
     min-width 0
-    margin 0
-    clearfix()
-  else
-    width auto
-    max-width none
-    min-width 0
-    margin 0px (-(column-gutter/2))
-    clearfix()
+    margin-left 0
+    margin-right 0
 
 
 
-// Columns mixin, syntax is (columns, behavior). Behavior can be 'centered' which centers things or 'collapse' which collapses the gutters. ex @include row(4,[center | collapse])
 
-column(columns=columns, behavior=false)
-  if behavior == center
+
+row()
+  width auto
+  max-width none
+  min-width 0
+  margin 0px (-(column-gutter/2))
+  clearfix()
+
+collapseRow()
+  margin 0
+
+
+column(columns=null, columnCount=total-columns)
+  float left
+  position relative
+  min-height 1px
+  padding 0 (column-gutter/2)
+
+  &:last-child
+    float right
+
+  &.end
+    float left
+
+  if columns
+    width gridCalc(columns, columnCount)
+
+  @media only screen and (max-width: 767px)
+    width auto !important
     float none
-    margin 0 auto
-    position relative
-    min-height 1px
-    padding 0 (column-gutter/2)
-    width gridCalc(columns, total-columns)
-  else if behavior == collapse
-    float left
-    position relative
-    min-height 1px
-    padding 0
-    width gridCalc(columns, total-columns)
-  else
-    float left
-    position relative
-    min-height 1px
-    padding 0 (column-gutter/2)
-    width gridCalc(columns, total-columns)
+
+    &:last-child
+      float none
+    &:before, &:after
+      content ""
+      display table
+
+    &:after
+      clear both
+
+
+centerColumn()
+  float none  
+  margin 0 auto
+
+collapseColumn()
+  padding 0
 
 
 // Offset Mixin, include after a column mixin to manipulate its grid offset.
-offsetBy(offset = 1)
-  font-size 10px
-  margin-left gridCalc(offset, total-columns)
-
+offsetBy(offset = 1, columnCount = total-columns)
+  margin-left gridCalc(offset, columnCount)
 
 // Push/Pull Mixins, include after a column mixin to manipulate stack ordering.
-push(push = 1)
-  left gridCalc(push, total-columns)
-pull(push = 1)
-  right gridCalc(push, total-columns)
+push(push = 1, columnCount = total-columns)
+  left gridCalc(push, columnCount)
+pull(push = 1, columnCount = total-columns)
+  right gridCalc(push, columnCount)
+
+
+mobileColumn(columns=null, columnCount=mobile-total-columns)
+  position relative
+  float left
+  padding 0 (column-gutter/2)
+  min-height 1px
+
+  &:last-child
+    float right
+
+  &.end
+    float left
+
+  if columns
+    width gridCalc(columns, columnCount) !important
+
+
+mobilePush(push = 1, columnCount = mobile-total-columns)
+  left gridCalc(push, columnCount)
+mobilePush(push = 1, columnCount = mobile-total-columns)
+  right gridCalc(push, columnCount)
+
+
+
+
 
 // Mobile Row, synctax is @include mobile-row();
 
