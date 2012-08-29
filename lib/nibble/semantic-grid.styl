@@ -1,27 +1,6 @@
 // Inspired by https://github.com/twigkit/semantic.gs/blob/master/stylesheets/scss/grid.scss
 
 
-// Mixin for Semantic Grid reponsiveness
-// Not yet supported by stylus.
-// respondTo(media)
-//   if media == smallScreen
-//     @media only screen and (max-width: screenSmall - 1) { @content; }
-//   else if media == mediumScreen {
-//     @media only screen and (max-width: screenMedium) and (min-width: screenSmall) { @content; }
-//   else if media == largeScreen {
-//     @media only screen and (min-width: screenXlarge) { @content; }
-
-
-
-// @mixin mobileClearfix() {
-//   @include respondTo(smallScreen) { &:before, &:after { content: ""; display: table; }
-//     &:after { clear: both; }
-//     &:last-child { float: none; }
-//   }
-// }
-
-
-
 // This defines the element as a row and sets up all .three.columns etc.. classes as well
 grid(columnCount = total-columns)
   row()
@@ -56,8 +35,9 @@ grid(columnCount = total-columns)
       offsetBy(i, columnCount)
 
   // Creating .push-# and .pull-# classes
-  for i in 2..columnCount - 2
+  for i in 1..columnCount - 2
     .push-{convertNumberToWord(i)}
+      bla i
       push(i, columnCount)
 
     .pull-{convertNumberToWord(i)}
@@ -70,7 +50,7 @@ grid(columnCount = total-columns)
       .offset-by-{convertNumberToWord(i)}
         margin-left 0 !important
 
-    for i in 2..total-columns - 2
+    for i in 1..total-columns - 2
       .push-{convertNumberToWord(i)}
         left auto
       .pull-{convertNumberToWord(i)}
@@ -89,9 +69,9 @@ grid(columnCount = total-columns)
             collapseColumn()
 
     for i in 1..mobile-total-columns - 1
-      .push-{convertNumberToWord(i)}-mobile
+      .mobile-push-{convertNumberToWord(i)}
         mobilePush(i)
-      .pull-{convertNumberToWord(i)}-mobile
+      .mobile-pull-{convertNumberToWord(i)}
         mobilePull(i)
 
 
@@ -192,7 +172,7 @@ mobileColumn(columns=null, columnCount=mobile-total-columns)
 
 mobilePush(push = 1, columnCount = mobile-total-columns)
   left gridCalc(push, columnCount)
-mobilePush(push = 1, columnCount = mobile-total-columns)
+mobilePull(push = 1, columnCount = mobile-total-columns)
   right gridCalc(push, columnCount)
 
 
