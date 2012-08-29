@@ -177,21 +177,3 @@ mobilePull(push = 1, columnCount = mobile-total-columns)
 
 
 
-
-
-// Mobile Row, synctax is @include mobile-row();
-
-// @mixin mobileRow() { @include respondTo(smallScreen) { width: auto; min-width: 0; margin-left: 0; margin-right: 0; @include clearfix(); } }
-
-// Mobile Columns, syntax is @include mobile-column(#);
-
-// @mixin mobileColumn(columns:columns, behavior: false) {
-//   @if behavior == center { @include respondTo(smallScreen) { float: none; margin: 0 auto; position: relative; min-height: 1px; padding: 0 (columnGutter/2); width: gridCalc(columns, mobileTotalColumns); }
-//   } @else if behavior == collapse { @include respondTo(smallScreen) { float: left; position: relative; min-height: 1px; padding: 0; width: gridCalc(columns, mobileTotalColumns); }
-//   } @else { @include respondTo(smallScreen) { width: gridCalc(columns, mobileTotalColumns); float: left; padding: 0 (columnGutter/2); } }
-// }
-
-// Mobile Push/Pull Mixin
-
-// @mixin mobilePush(push:1) { @include respondTo(smallScreen) { left: gridCalc(push, mobileTotalColumns); } }
-// @mixin mobilePull(push:1) { @include respondTo(smallScreen) { right: gridCalc(push, mobileTotalColumns); } }
