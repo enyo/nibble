@@ -56,11 +56,13 @@ To include all of nibble's elements you write this in your `.styl` file:
 This includes *nib* and all of *nibble's* functionality.
 
 You can also cherrypick the components you want instead of importing the whole lib.
-In this case, make sure that you include the `settings.styl` file
+In this case, make sure that you include the `setup.styl` file
 
 ```stylus
-@import "nibble/settings"
+@import "nibble/setup"
 ```
+
+which includes the settings, functions and mixins needed by nearly all components.
 
 I'll add more documentation soon. Please refer to the nibble folder for now on
 which elements exist.
