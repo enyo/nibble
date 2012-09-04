@@ -1,6 +1,6 @@
 {
     "name": "nibble"
-  , "version": "0.0.1-dev"
+  , "version": "0.0.1"
   , "private": false
   , "dependencies": {
       "stylus": "0.x"
