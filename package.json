@@ -1,14 +1,18 @@
 {
-    "name": "nibble"
-  , "version": "0.0.2-dev"
-  , "private": false
-  , "dependencies": {
-      "stylus": "0.x"
-    , "nib": "0.x"
+  "name": "nibble",
+  "description": "CSS Framework based on nib.",
+  "version": "0.0.2-dev",
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/enyo/nibble.git"
   },
-
-    "main": "lib/nibble.js"
-  , "devDependencies": {
-      "should": "0.x"
-    }
+  "author": "Matias Meno <m@tias.me>",
+  "main": "lib/nibble.js",
+  "devDependencies": {
+    "should": "0.x",
+    "stylus": "0.x",
+    "nib": "0.x"
+  },
+  "engines": { "node": "*" }
 }
