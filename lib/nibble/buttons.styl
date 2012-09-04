@@ -1,9 +1,36 @@
 
+// Settings
+
+button-radius ?= 4px
+button-base ?= 10px
+
+tiny-button-base ?= button-base - 5
+small-button-base ?= button-base - 3
+large-button-base ?= button-base + 5
+
+
+buttonColors(color)
+
+  background color
+  // background linear-gradient(top, lighten(color, 5), darken(color, 5))
+  background linear-gradient(top, lighten(color, 1), lighten(color, 1) 50%, darken(color, 2) 50%, darken(color, 4))
+
+  if dark(color)
+    border 1px solid darken(color, 5)
+  else
+    border 1px solid darken(color, 20)
+
+  &:hover
+    background linear-gradient(top, lighten(color, 10), lighten(color, 2) 50%, darken(color, 2) 50%, darken(color, 8))
+    text-shadow 1px 1px 2px rgba(0, 0, 0, 0.4)
+  &:focus
+    box-shadow 0 0 6px opacify(color, 0.4), 0 1px 0 shiny-edge inset
+
+
 // Normal Buttons
 .button
   width auto
-  background main-color
-  border 1px solid darken((main-color), 15%)
+
   box-shadow 0 1px 0 shiny-edge inset
   color white
   cursor pointer
@@ -18,18 +45,21 @@
   position relative
   text-align center
   text-decoration none
-  transition background-color 0.15s ease-in-out
+  text-shadow 1px 1px 2px rgba(0, 0, 0, 0.3)
+  // transition background-color 0.15s ease-in-out
+
+  if button-radius
+    border-radius button-radius
+
+
+  buttonColors(main-color)
+
 
   &:hover
     color white
-    background-color darken(main-color, 10%)
 
   &:active
-    box-shadow 0 1px 0 dark-edge inset
-
-  &:focus
-    box-shadow 0 0 4px opacify(main-color, 0.4), 0 1px 0 shiny-edge inset
-    color white
+    box-shadow 1px 1px 5px dark-edge inset, -1px -1px 5px shiny-edge inset
 
   // Sizes
   &.large
@@ -52,35 +82,19 @@
     text-align center
 
 
-  /* Colors */
+
+  // Colors
   &.success
-    background-color success-color
-    border 1px solid darken((success-color), 15%)
-    &:hover
-      background-color darken((success-color), 10%)
-    &:focus
-      box-shadow 0 0 5px opacify(success-color, 0.4), 0 1px 0 shiny-edge inset
+    buttonColors(success-color)
  
   &.alert
-    background-color alert-color
-    border 1px solid darken((alert-color), 15%)
-    &:hover
-      background-color darken((alert-color), 10%)
-    &:focus
-      box-shadow 0 0 4px opacify(alert-color, 0.3), 0 1px 0 shiny-edge inset
+    buttonColors(alert-color)
  
   &.secondary
-    background-color secondary-color
-    color darken((secondary-color), 80%)
-    border 1px solid darken((secondary-color), 15%)
-    &:hover
-      background-color darken((secondary-color), 10%)
-    &:focus
-      box-shadow 0 0 5px opacify(secondary-color, 0.5), 0 1px 0 shiny-edge inset
+    buttonColors(secondary-color)
+    color darken(secondary-color, 80%)
  
 
-  &.rounded
-    border-radius button-radius
   &.round
     border-radius 1000px
 

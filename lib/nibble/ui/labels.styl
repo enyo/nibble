@@ -1,0 +1,35 @@
+
+label-radius ?= 4px
+
+.label
+  padding 1px 4px 2px
+  font-size ms(0) - 2
+  font-weight bold
+  text-align center
+  text-decoration none
+  line-height 1
+  white-space nowrap
+  display inline
+  position relative
+  bottom 1px
+  color #fff
+  background main-color
+
+  if label-radius
+    border-radius label-radius
+
+  &.round
+    padding 1px 7px 2px
+    border-radius 1000px
+
+
+  &.alert    
+    background-color alert-color
+
+  &.success  
+    background-color success-color
+
+  &.secondary  
+    background-color secondary-color
+    color darken(secondary-color, 60%)
+

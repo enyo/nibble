@@ -1,0 +1,39 @@
+
+panel-radius ?= 3px
+
+.panel
+  background darken(white, 5%)
+  border solid 1px darken(white, 10%)
+  margin 0 0 22px 0
+  padding 20px
+
+  if panel-radius
+    border-radius panel-radius
+
+
+  > :first-child
+    margin-top 0
+
+
+  > :last-child
+    margin-bottom 0
+
+
+  &.callout
+    background main-color
+    color #fff
+    border-color darken(main-color, 10%)
+    box-shadow inset 0px 1px 0px rgba(255,255,255,0.5)
+    a
+      color #fff
+
+    .button
+      background white
+      border none
+      color main-color
+      text-shadow none
+
+      &:hover
+        background rgba(255,255,255,0.8)
+
+

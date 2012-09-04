@@ -1,0 +1,54 @@
+ul.breadcrumbs
+  display block
+  background lighten(secondary-color, 5%)
+  padding 6px 10px 7px
+  border 1px solid secondary-color
+  border-radius 2px
+  overflow hidden
+
+  li
+    margin 0
+    padding 0 12px 0 0
+    float left
+    list-style none
+
+    a, span
+      text-transform uppercase
+      fontSize(11)
+      padding-left 12px
+
+    &:first-child a, &:first-child span
+      padding-left 0
+
+
+
+  li:before
+    content "/"
+    color #aaa
+
+  li:first-child:before
+    content " "
+
+  li.current a
+    cursor default
+    color #333
+
+  li:hover a, li a:focus
+    text-decoration underline
+
+  li.current:hover a,
+  li.current a:focus
+    text-decoration none
+
+  li.unavailable
+    a
+      color #999
+
+    &:hover a, a:focus
+      text-decoration none
+      color #999
+      cursor default
+
+
+
+

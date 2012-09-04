@@ -1,0 +1,39 @@
+
+ul.pagination
+  display block
+  height 24px
+  margin-left -5px;
+
+  li
+    float left
+    display block
+    height 24px
+    color #999
+    font-size ms(0)
+    margin-left 5px;
+
+    a
+      display block
+      padding 1px 7px 1px
+      color #555
+      border-radius 2px
+
+    &:hover a,
+    a:focus
+      background transparentize(black, 0.9)
+
+    &.unavailable a
+      cursor default
+      color #999
+
+    &.unavailable:hover a,
+    &.unavailable a:focus
+      background transparent
+
+    &.current a
+      background main-color
+      color white
+      font-weight bold
+      cursor default;
+      &:hover
+        background main-color
