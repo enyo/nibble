@@ -44,6 +44,10 @@ grid(columnCount = total-columns)
 
 
   @media only screen and (max-width: 767px)
+    &.partial
+      .column:last-child
+      .columns:last-child
+        float none
 
     for i in 1..total-columns - 2
       .offset-by-{convertNumberToWord(i)}
