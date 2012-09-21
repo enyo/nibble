@@ -16,11 +16,6 @@ grid(columnCount = total-columns)
     &.centered
       centerColumn()
 
-  &.partial
-    // If a row is only partially complete the last column should be on the left
-    .column:last-child
-    .columns:last-child
-      float left
 
 
   // Creating .row .#.columns classes
@@ -43,11 +38,15 @@ grid(columnCount = total-columns)
       pull(i, columnCount)
 
 
-  @media only screen and (max-width: 767px)
+  @media only screen and (min-width: 768px)
+    // Partial rows only apply when it's not mobile.
     &.partial
+      // If a row is only partially complete the last column should be on the left
       .column:last-child
       .columns:last-child
-        float none
+        float left
+
+  @media only screen and (max-width: 767px)
 
     for i in 1..total-columns - 2
       .offset-by-{convertNumberToWord(i)}
@@ -104,6 +103,8 @@ row()
   min-width 0
   margin 0px (-(column-gutter/2))
   clearfix()
+
+
 
 collapseRow()
   margin 0
