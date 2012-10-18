@@ -12,7 +12,8 @@ convertNumberToWord(num)
 
 // Grid Calculation for Percentages
 gridCalc(colNumber, totalColumns)
-  unit((100 * colNumber / totalColumns), '%')
+  if colNumber and totalColumns
+    unit((100 * colNumber / totalColumns), '%')
 
 
 // Font size mixin to include px and rem
