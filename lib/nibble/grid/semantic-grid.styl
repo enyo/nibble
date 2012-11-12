@@ -32,10 +32,10 @@ grid(columnCount = total-columns)
   for i in 1..columnCount - 2
     .push-{convertNumberToWord(i)}
       bla i
-      push(i, columnCount)
+      push-column(i, columnCount)
 
     .pull-{convertNumberToWord(i)}
-      pull(i, columnCount)
+      pull-column(i, columnCount)
 
 
   @media only screen and (min-width: 768px)
@@ -152,9 +152,9 @@ offsetBy(offset = 1, columnCount = total-columns)
   margin-left gridCalc(offset, columnCount)
 
 // Push/Pull Mixins, include after a column mixin to manipulate stack ordering.
-push(push = 1, columnCount = total-columns)
+push-column(push = 1, columnCount = total-columns)
   left gridCalc(push, columnCount)
-pull(push = 1, columnCount = total-columns)
+pull-column(push = 1, columnCount = total-columns)
   right gridCalc(push, columnCount)
 
 
