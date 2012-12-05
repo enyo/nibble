@@ -16,11 +16,13 @@ buttonColors(color)
   background linear-gradient(top, lighten(color, 1), lighten(color, 1) 50%, darken(color, 2) 50%, darken(color, 4))
 
   if dark(color)
+    color white
     border 1px solid darken(color, 5)
     text-shadow 1px 1px 2px rgba(0, 0, 0, 0.3)
     &:hover
       text-shadow 1px 1px 2px rgba(0, 0, 0, 0.4)
   else
+    color black
     border 1px solid darken(color, 20)
     text-shadow 1px 1px 2px rgba(0, 0, 0, 0.1)
     &:hover
@@ -41,7 +43,6 @@ buttonColors(color)
   overflow ellipsis
 
   box-shadow 0 1px 0 shiny-edge inset
-  color white
   cursor pointer
   display inline-block
   font-size modular-scale(0)

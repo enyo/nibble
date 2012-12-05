@@ -7,6 +7,13 @@ mobile-total-columns ?= 4
 
 // Colors
 main-color ?= #197fe2
+
+unless main-txt-color
+  if dark(main-color)
+    main-txt-color = white
+  else
+    main-txt-color = black
+
 link-color ?= main-color
 secondary-color ?= #eee
 alert-color ?= #c60f13
