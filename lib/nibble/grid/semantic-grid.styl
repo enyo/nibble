@@ -16,11 +16,6 @@ grid(columnCount = total-columns)
     &.centered
       centerColumn()
 
-  &.partial
-    // If a row is only partially complete the last column should be on the left
-    .column:last-child
-    .columns:last-child
-      float left
 
 
   // Creating .row .#.columns classes
@@ -37,11 +32,19 @@ grid(columnCount = total-columns)
   for i in 1..columnCount - 2
     .push-{convertNumberToWord(i)}
       bla i
-      push(i, columnCount)
+      push-column(i, columnCount)
 
     .pull-{convertNumberToWord(i)}
-      pull(i, columnCount)
+      pull-column(i, columnCount)
 
+
+  @media only screen and (min-width: 768px)
+    // Partial rows only apply when it's not mobile.
+    &.partial
+      // If a row is only partially complete the last column should be on the left
+      .column:last-child
+      .columns:last-child
+        float left
 
   @media only screen and (max-width: 767px)
 
@@ -101,6 +104,8 @@ row()
   margin 0px (-(column-gutter/2))
   clearfix()
 
+
+
 collapseRow()
   margin 0
 
@@ -147,9 +152,9 @@ offsetBy(offset = 1, columnCount = total-columns)
   margin-left gridCalc(offset, columnCount)
 
 // Push/Pull Mixins, include after a column mixin to manipulate stack ordering.
-push(push = 1, columnCount = total-columns)
+push-column(push = 1, columnCount = total-columns)
   left gridCalc(push, columnCount)
-pull(push = 1, columnCount = total-columns)
+pull-column(push = 1, columnCount = total-columns)
   right gridCalc(push, columnCount)
 
 

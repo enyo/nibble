@@ -9,28 +9,27 @@ html
   font-size 62.5%
 
 body
-  background white
+  background body-background
   font-family body-font-family
-  font-size ms(0)
-  line-height 1
+  font-size modular-scale(0)
+  line-height 1.5
   color body-font-color
   position relative
-  -webkit-font-smoothing antialiased
 
 
 
 // Links
 
 a
-  color main-color
+  color link-color
   text-decoration none
   line-height inherit
 
-  a:hover
-    color darken(main-color, 5%)
+  &:hover
+    color darken(link-color, 50%)
 
-  a:focus
-    color main-color
+  &:focus
+    color link-color
     outline none
 
 p

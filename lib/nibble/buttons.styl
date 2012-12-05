@@ -16,27 +16,36 @@ buttonColors(color)
   background linear-gradient(top, lighten(color, 1), lighten(color, 1) 50%, darken(color, 2) 50%, darken(color, 4))
 
   if dark(color)
+    color white
     border 1px solid darken(color, 5)
+    text-shadow 1px 1px 2px rgba(0, 0, 0, 0.3)
+    &:hover
+      text-shadow 1px 1px 2px rgba(0, 0, 0, 0.4)
   else
+    color black
     border 1px solid darken(color, 20)
+    text-shadow 1px 1px 2px rgba(0, 0, 0, 0.1)
+    &:hover
+      text-shadow 1px 1px 2px rgba(0, 0, 0, 0.2)
 
   &:hover
     background linear-gradient(top, lighten(color, 10), lighten(color, 2) 50%, darken(color, 2) 50%, darken(color, 8))
-    text-shadow 1px 1px 2px rgba(0, 0, 0, 0.4)
   &:focus
     box-shadow 0 0 6px opacify(color, 0.4), 0 1px 0 shiny-edge inset
+
+
 
 
 // Normal Buttons
 .button
   width auto
 
+  overflow ellipsis
+
   box-shadow 0 1px 0 shiny-edge inset
-  color white
   cursor pointer
   display inline-block
-  defaultFontFamily()
-  font-size ms(0)
+  font-size modular-scale(0)
   font-weight bold
   line-height 1
   margin 0
@@ -45,7 +54,7 @@ buttonColors(color)
   position relative
   text-align center
   text-decoration none
-  text-shadow 1px 1px 2px rgba(0, 0, 0, 0.3)
+
   // transition background-color 0.15s ease-in-out
 
   if button-radius
@@ -63,18 +72,18 @@ buttonColors(color)
 
   // Sizes
   &.large
-    font-size ms(1)
+    font-size modular-scale(1)
     padding (large-button-base) (large-button-base * 2) (large-button-base + 1)
 
   &.medium
-    font-size ms(0)
+    font-size modular-scale(0)
 
   &.small
-    font-size ms(0) - 3
+    font-size modular-scale(0) - 3
     padding (small-button-base) (small-button-base * 2) (small-button-base + 1)
 
   &.tiny
-    font-size ms(0) - 4
+    font-size modular-scale(0) - 4
     padding (tiny-button-base) (tiny-button-base * 2) (tiny-button-base + 1)
 
   &.expand
@@ -93,7 +102,8 @@ buttonColors(color)
   &.secondary
     buttonColors(secondary-color)
     color darken(secondary-color, 80%)
- 
+    text-shadow 1px 1px 2px rgba(0, 0, 0, 0.1)
+
 
   &.round
     border-radius 1000px
@@ -168,7 +178,7 @@ input[type=submit].button, button.button
 //   &>ul { @include box-sizing(content-box); display: none; position: absolute; left: -1px; background: #fff; background: rgba(#fff,0.95); list-style: none; margin: 0; padding: 0; border: 1px solid darken(white, 20%); border-top: none; min-width: 100%; z-index: 40;
 
 //     li { cursor: pointer; padding: 0; min-height: 18px; line-height: 18px; margin: 0; white-space: nowrap; list-style: none;
-//       a { display: block; color: #555; font-size: ms(0) - 1; font-weight: normal; padding: 6px 14px; text-align: left; }
+//       a { display: block; color: #555; font-size: modular-scale(0) - 1; font-weight: normal; padding: 6px 14px; text-align: left; }
 //       &:hover { background-color: lighten(main-color, 45%); color: #222; }
 //       &.divider { min-height: 0; padding: 0; height: 1px; margin: 4px 0; background: darken(white, 7%); }
 //     }

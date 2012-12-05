@@ -5,6 +5,12 @@
       "regexs": [
         "\"version\": \"###\""
       ]
+    },
+    {
+      "name": "lib/nibble.js",
+      "regexs": [
+        "version = '###'"
+      ]
     }
   ]
 }

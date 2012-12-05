@@ -9,7 +9,7 @@ ul.pagination
     display block
     height 24px
     color #999
-    font-size ms(0)
+    font-size modular-scale(0)
     margin-left 5px;
 
     a
@@ -18,7 +18,7 @@ ul.pagination
       color #555
       border-radius 2px
 
-    &:hover a,
+    &:hover a
     a:focus
       background transparentize(black, 0.9)
 
@@ -26,14 +26,15 @@ ul.pagination
       cursor default
       color #999
 
-    &.unavailable:hover a,
+    &.unavailable:hover a
     &.unavailable a:focus
       background transparent
 
     &.current a
       background main-color
-      color white
+      color main-txt-color
+
       font-weight bold
-      cursor default;
+      cursor default
       &:hover
         background main-color

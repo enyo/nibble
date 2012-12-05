@@ -7,6 +7,14 @@ mobile-total-columns ?= 4
 
 // Colors
 main-color ?= #197fe2
+
+unless main-txt-color
+  if dark(main-color)
+    main-txt-color = white
+  else
+    main-txt-color = black
+
+link-color ?= main-color
 secondary-color ?= #eee
 alert-color ?= #c60f13
 success-color ?= #5da423
@@ -42,13 +50,12 @@ body-font-color ?= txt-color
 
 
 // Modular Scale Settings
-base-font-fize ?= 14px
+base-font-size ?= 14px
 important-mod-num ?= 44px
 base-size = base-font-size important-mod-num
 
 
 // Media Queries
-
 screen-small ?= 768px
 screen-medium ?= 1279px
 screen-x-large ?= 1441px
